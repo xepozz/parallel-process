@@ -64,7 +64,13 @@ trait EventDispatcherTrait
     protected function dispatch($name, Event $event)
     {
         $this->assertEventName($name);
-        $this->getEventDispatcher()->dispatch($name, $event);
+        $eventDispatcher = $this->getEventDispatcher();
+        if ($eventDispatcher instanceof \Symfony\Contracts\EventDispatcher\EventDispatcherInterface) {
+            $eventDispatcher->dispatch($event, $name);
+        } else {
+            $eventDispatcher->dispatch($name, $event);
+        }
+
         return $this;
     }
 
