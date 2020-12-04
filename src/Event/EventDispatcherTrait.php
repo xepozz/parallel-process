@@ -13,6 +13,10 @@
 
 namespace Graze\ParallelProcess\Event;
 
+if (class_exists('Symfony\Component\EventDispatcher\Event')) {
+    class_alias('Symfony\Component\EventDispatcher\Event', 'Symfony\Contracts\EventDispatcher\Event');
+}
+
 use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;

@@ -16,6 +16,10 @@ namespace Graze\ParallelProcess\Event;
 use Graze\ParallelProcess\RunInterface;
 use Symfony\Component\EventDispatcher\Event;
 
+if (class_exists('Symfony\Component\EventDispatcher\Event')) {
+    class_alias('Symfony\Component\EventDispatcher\Event', 'Symfony\Contracts\EventDispatcher\Event');
+}
+
 class RunEvent extends Event
 {
     const STARTED    = 'started';

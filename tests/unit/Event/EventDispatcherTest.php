@@ -17,6 +17,10 @@ use Graze\ParallelProcess\Test\EventDispatcherFake;
 use Graze\ParallelProcess\Test\TestCase;
 use Symfony\Component\EventDispatcher\Event;
 
+if (class_exists('Symfony\Component\EventDispatcher\Event')) {
+    class_alias('Symfony\Component\EventDispatcher\Event', 'Symfony\Contracts\EventDispatcher\Event');
+}
+
 class EventDispatcherTest extends TestCase
 {
     /** @var EventDispatcherFake */
